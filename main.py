@@ -11,6 +11,7 @@ import wolk
 
 
 if __name__ == "__main__":
+    total = 0
     node_ip = input("Enter node IP:")
     r = sr.Recognizer()
     list_microphones()
@@ -53,12 +54,16 @@ if __name__ == "__main__":
             result = classify_sentence(sentence)
             if result == SENTANCE_SAD:
                 text = "SAD"
+                total += 1
             elif result == SENTANCE_JOYFUL:
                 text = "JOYFUL"
+                total += 1
             elif result == SENTANCE_FUNNY:
                 text = "FUNNY"
+                total += 3
             elif result == SENTANCE_SERIOUS:
                 text = "SERIOUS"
+                total += 1
             else:
                 print("unknown result, assuming SERIOUS")
                 text = "SERIOUS"
@@ -69,10 +74,10 @@ if __name__ == "__main__":
             if ch == 's' or ch == 'S':
                 print("SENDING DATA %d" % i)
                 print(requests.get("http://%s/%d" % (node_ip, result)))
-                wolk_device.add_sensor_reading("S%d" % (i + 1), " ")
+                wolk_device.add_sensor_reading("S%d" % (i + 1), text)
                 wolk_device.publish()
                 break
             else:
                 print("REPEAT")
         
-    print(classify_sentence("TIMISOARA IS CAPITAL"))
+    print(total % 3)

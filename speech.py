@@ -19,7 +19,7 @@ def recognize_voice(r, audio):
         return text.upper()
 
 def classify_sentence(sentence):
-    if "NOVI SAD" in sentence or "NOVISAD" in sentence or "TIMISOARA" in sentence or "SKOPJE" in sentence or "COCHLEA" in sentence or "SCOPELY" in sentence:
+    if "NOVI SAD" in sentence or "NOVISAD" in sentence or "TIMISOARA" in sentence or "SKOPJE" in sentence or "COCHLEA" in sentence or "SCOPELY" in sentence or 'TELEFLORA' in sentence:
         return SENTANCE_SERIOUS
     elif "SERBIA" in sentence or "SERVIA" in sentence or "MACEDONIA" in sentence or "ROMANIA" in sentence:
         return SENTANCE_SAD
