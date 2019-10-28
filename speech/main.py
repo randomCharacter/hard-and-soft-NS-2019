@@ -39,7 +39,7 @@ if __name__ == "__main__":
             print("PRESS ANYTHING TO RECORD")
             getch()
             print("RECORDING")
-            with sr.Microphone(device_index=5) as source:
+            with sr.Microphone(device_index=8) as source:
                 audio = r.listen(source, phrase_time_limit = 10)
             sentence = ""
             try:
